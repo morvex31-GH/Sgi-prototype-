@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sukhjinder Group of Institutes – Gurdaspur (SGI)</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+<script>
+tailwind.config = { darkMode: "class", theme: { extend: {
+  fontFamily: { sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"] },
+  colors: { navy: { 950: "#0a1224", 900: "#0f1b34", 800: "#16264a" }, gold: { 400: "#fbbf24", 500: "#f59e0b" } } } } };
+</script>
+<style>
+:root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); }
+html { scroll-behavior: smooth; scroll-padding-top: 7rem; }
+body { background: #f8fafc; color: #0f172a; padding-bottom: 4.5rem; }
+.dark body { background: #0a1224; color: #e2e8f0; }
+#nav { background: linear-gradient(to bottom, rgba(10,18,36,.65), transparent); color:#fff; }
+#nav.glass { color: #0f172a; background: rgba(255,255,255,.8); box-shadow: 0 6px 24px -12px rgba(15,23,42,.25); }
+.dark #nav.glass { color:#e2e8f0; background: rgba(15,27,52,.82); }
+.hero-bg { background-image: linear-gradient(180deg, rgba(10,18,36,.80) 0%, rgba(10,18,36,.62) 45%, rgba(10,18,36,.92) 100%), url("https://share.google/F7mEi0DXimYGlbHKW"); background-size: cover; background-position: center 35%; }
+.glass { background: rgba(255,255,255,.72); backdrop-filter: blur(14px); border: 1px solid rgba(148,163,184,.25); }
+.dark .glass { background: rgba(22,38,74,.55); border-color: rgba(148,163,184,.18); }
+.reveal { opacity: 0; transform: translateY(16px); transition: all .55s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (min-width: 1024px) { body { padding-bottom: 0; } }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- ========== INSTANT-CONTACT BAR (official details; edit in CONFIG only) ========== -->
+<div id="contactBar" class="fixed inset-x-0 top-0 z-50 bg-navy-950 text-white text-xs sm:text-sm" style="padding-top:env(safe-area-inset-top,0px)">
+  <div class="mx-auto flex h-9 max-w-7xl items-center justify-between gap-3 px-4">
+    <div class="flex items-center gap-4 font-semibold">
+      <a id="cbCall" class="flex items-center gap-1 hover:text-gold-400"><i data-lucide="phone" class="h-4 w-4"></i><span id="cbPhone"></span></a>
+      <a id="cbWa" target="_blank" rel="noopener" class="flex items-center gap-1 text-emerald-300 hover:text-emerald-200"><i data-lucide="message-circle" class="h-4 w-4"></i>WhatsApp</a>
+      <a id="cbMail" class="hidden md:flex items-center gap-1 hover:text-gold-400"><i data-lucide="mail" class="h-4 w-4"></i><span id="cbEmail"></span></a>
+    </div>
+    <span class="hidden sm:inline text-slate-300">Admissions open · 2026-27 session</span>
+  </div>
+</div>
+
+<!-- ========== NAV ========== -->
+<header id="nav" class="fixed inset-x-0 z-40 transition-all duration-300" style="top:calc(2.25rem + env(safe-area-inset-top,0px))">
+  <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+    <a href="#" class="flex items-center gap-3 font-extrabold" aria-label="SGI Gurdaspur home"><img src="https://share.google/TXhZILlm9EVvXfCcj" onerror="this.style.visibility='hidden'" alt="Sukhjinder Group of Institutes logo" width="44" height="44" class="h-10 w-10 rounded-full shadow-lg ring-2 ring-white/30 sm:h-11 sm:w-11"><span class="text-lg leading-tight tracking-tight sm:text-xl">SGI Gurdaspur<span class="block text-[10px] font-semibold uppercase tracking-widest opacity-70">Sukhjinder Group of Institutes</span></span></a>
+    <nav class="hidden lg:flex items-center gap-1 text-sm font-semibold" aria-label="Main">
+      <a class="rounded-lg px-3 py-2 hover:bg-slate-500/10" href="#courses">Academics</a>
+      <a class="rounded-lg px-3 py-2 hover:bg-slate-500/10" href="#admissions">Admissions</a>
+      <a class="rounded-lg px-3 py-2 hover:bg-slate-500/10" href="#courses">Fee Details</a>
+      <a class="rounded-lg px-3 py-2 hover:bg-slate-500/10" href="#placements">Placements</a>
+      <a class="rounded-lg px-3 py-2 hover:bg-slate-500/10" href="#campus">Campus Tour</a>
+      <a class="rounded-lg px-3 py-2 hover:bg-slate-500/10" href="#footer">About Us</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button id="themeBtn" aria-label="Toggle dark mode" class="grid h-10 w-10 place-items-center rounded-xl hover:bg-slate-500/10"><i data-lucide="moon" class="h-5 w-5"></i></button>
+      <button data-apply class="hidden sm:block rounded-xl bg-gold-500 px-4 py-2 text-sm font-bold text-navy-950 shadow hover:bg-gold-400">Quick Apply</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ========== HERO ========== -->
+<section class="hero-bg relative flex min-h-[100svh] flex-col justify-center overflow-hidden bg-navy-950 pt-36 pb-10 text-white sm:pt-40">
+  <div class="relative mx-auto w-full max-w-5xl px-5 text-center">
+    <p class="mx-auto mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[.18em] backdrop-blur sm:text-xs"><span class="h-1.5 w-1.5 rounded-full bg-gold-400"></span>Admissions open · 2026-27</p>
+    <h1 class="text-balance text-4xl font-extrabold leading-[1.08] tracking-tight drop-shadow-lg sm:text-6xl lg:text-7xl">Sukhjinder Group of Institutes <span class="text-gold-400">- Gurdaspur</span></h1>
+    <p class="mx-auto mt-6 max-w-2xl text-base text-slate-200 sm:text-lg">Engineering, pharmacy, nursing, science and more, with practical training and placement support. Apply in 3 minutes.</p>
+    <div class="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+      <button data-apply class="rounded-xl bg-gold-500 px-7 py-3.5 font-bold text-navy-950 shadow-xl transition hover:-translate-y-0.5 hover:bg-gold-400">Start quick application</button>
+      <a href="#courses" class="rounded-xl border border-white/40 bg-white/5 px-7 py-3.5 font-semibold backdrop-blur transition hover:bg-white/15">Explore programs &amp; fees</a>
+    </div>
+  </div>
+  <div class="relative mx-auto mt-14 w-full max-w-5xl px-5">
+    <div class="grid grid-cols-1 gap-2 rounded-2xl border border-white/15 bg-white/10 p-3 text-center text-xs font-semibold backdrop-blur-md sm:grid-cols-3 sm:text-sm">
+      <span class="rounded-xl px-3 py-2">AICTE approved</span>
+      <span class="rounded-xl px-3 py-2 sm:border-x sm:border-white/15">Affiliated to IKGPTU</span>
+      <span class="rounded-xl px-3 py-2">25+ years of academic excellence</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ADMISSION FUNNEL OVERVIEW ========== -->
+<section id="admissions" class="mx-auto max-w-5xl px-4 py-16">
+  <h2 class="reveal text-center text-3xl font-extrabold sm:text-4xl">Admission in 4 simple steps</h2>
+  <ol class="mt-8 grid gap-4 sm:grid-cols-4">
+    <li class="reveal glass rounded-2xl p-5"><b class="text-gold-500">1</b><p class="mt-1 font-bold">Your details</p><p class="text-sm text-slate-600 dark:text-slate-400">Name, phone, qualification. Instant eligibility check.</p></li>
+    <li class="reveal glass rounded-2xl p-5"><b class="text-gold-500">2</b><p class="mt-1 font-bold">Pick a course</p><p class="text-sm text-slate-600 dark:text-slate-400">See fees before you commit.</p></li>
+    <li class="reveal glass rounded-2xl p-5"><b class="text-gold-500">3</b><p class="mt-1 font-bold">Send &amp; verify</p><p class="text-sm text-slate-600 dark:text-slate-400">One tap on WhatsApp, or ask for a callback.</p></li>
+    <li class="reveal glass rounded-2xl p-5"><b class="text-gold-500">4</b><p class="mt-1 font-bold">Confirm seat</p><p class="text-sm text-slate-600 dark:text-slate-400">The admissions team guides documents and payment.</p></li>
+  </ol>
+</section>
+
+<!-- ========== COURSE & FEE EXPLORER ========== -->
+<section id="courses" class="bg-slate-100 py-16 dark:bg-navy-900">
+  <div class="mx-auto max-w-7xl px-4">
+    <h2 class="reveal text-3xl font-extrabold sm:text-4xl">Programs &amp; official fees</h2>
+    <p class="mt-2 text-slate-600 dark:text-slate-400">Fees appear exactly as entered in the official fee table. A line shows “Confirm with admissions” until the institute supplies the figure.</p>
+    <div id="facTabs" class="mt-6 flex gap-2 overflow-x-auto pb-2" role="tablist"></div>
+    <div id="grid" class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+  </div>
+</section>
+
+<!-- ========== PLACEMENTS ========== -->
+<section id="placements" class="mx-auto max-w-7xl px-4 py-16">
+  <h2 class="reveal text-3xl font-extrabold sm:text-4xl">Placements &amp; career support</h2>
+  <p class="mt-2 text-sm text-slate-500">Figures as shown on the current website. Confirm each before publishing.</p>
+  <div id="stats" class="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4"></div>
+  <h3 class="mt-10 font-bold">Industry collaborations &amp; tie-ups</h3>
+  <div id="logos" class="mt-3 flex flex-wrap gap-3"></div>
+  <h3 class="mt-10 font-bold">Student voices</h3>
+  <div id="stories" class="mt-3 grid gap-4 md:grid-cols-2 lg:grid-cols-4"></div>
+</section>
+
+<!-- ========== CAMPUS ========== -->
+<section id="campus" class="bg-slate-100 py-16 dark:bg-navy-900">
+  <div class="mx-auto max-w-7xl px-4">
+    <h2 class="reveal text-3xl font-extrabold sm:text-4xl">Campus tour</h2>
+    <p class="mt-2 text-sm text-slate-500">Replace each tile with a real photo or a 360° tour embed.</p>
+    <div id="gallery" class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3"></div>
+  </div>
+</section>
+</main>
+
+<!-- ========== FOOTER (official details) ========== -->
+<footer id="footer" class="bg-navy-950 py-12 text-slate-300">
+  <div class="mx-auto grid max-w-7xl gap-8 px-4 md:grid-cols-3">
+    <div class="text-sm"><p class="text-xl font-extrabold text-white">Sukhjinder Group of Institutes</p>
+      <p id="fAddr" class="mt-3"></p>
+      <p class="mt-3 flex flex-col gap-1"><a id="fCall" class="hover:text-gold-400"></a><a id="fLand" class="hover:text-gold-400"></a><a id="fMail" class="hover:text-gold-400"></a></p></div>
+    <div class="text-sm"><p class="mb-2 font-bold text-white">Quick links</p>
+      <a class="block py-1 hover:text-gold-400" href="https://sgigurdaspur.org/anti-ragging-policy/">Anti-ragging policy</a>
+      <a class="block py-1 hover:text-gold-400" href="https://sgigurdaspur.org/hostels/">Hostels</a>
+      <a class="block py-1 hover:text-gold-400" href="https://sgigurdaspur.org/transport/">Transport</a>
+      <a class="block py-1 hover:text-gold-400" href="https://sgigurdaspur.org/notice_board/ambedkar-day/">Notices</a></div>
+    <div class="text-sm"><p class="mb-2 font-bold text-white">Find us</p>
+      <a id="fMap" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-xl border border-white/20 px-4 py-2 hover:bg-white/10"><i data-lucide="map-pin" class="h-4 w-4"></i>Open in Google Maps</a>
+      <div id="fSocial" class="mt-4 flex gap-3"></div></div>
+  </div>
+  <p class="mx-auto mt-8 max-w-7xl px-4 text-xs text-slate-400">Design concept. Not the official site.</p>
+</footer>
+
+<!-- ========== MOBILE STICKY BOTTOM SHEET ========== -->
+<div class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 gap-2 border-t border-slate-300/40 bg-white/90 p-2 backdrop-blur dark:bg-navy-900/90 lg:hidden" style="padding-bottom:calc(.5rem + env(safe-area-inset-bottom,0px))">
+  <a id="mbCall" class="flex flex-col items-center rounded-xl py-1 text-xs font-bold"><i data-lucide="phone" class="h-5 w-5"></i>Call</a>
+  <a id="mbWa" target="_blank" rel="noopener" class="flex flex-col items-center rounded-xl py-1 text-xs font-bold text-emerald-600"><i data-lucide="message-circle" class="h-5 w-5"></i>WhatsApp</a>
+  <button data-apply class="rounded-xl bg-gold-500 text-sm font-extrabold text-navy-950">Quick Apply</button>
+</div>
+
+<!-- ========== 3-STEP ENROLLMENT MODAL ========== -->
+<div id="modal" class="fixed inset-0 z-[60] hidden items-end justify-center bg-black/60 sm:items-center sm:p-4" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="max-h-[92vh] w-full max-w-md overflow-y-auto rounded-t-3xl bg-white p-6 text-slate-900 shadow-2xl dark:bg-navy-800 dark:text-white sm:rounded-3xl" style="padding-bottom:calc(1.5rem + env(safe-area-inset-bottom,0px))">
+    <div class="flex items-center justify-between"><h3 id="mTitle" class="text-xl font-extrabold">Quick application</h3><button id="mClose" aria-label="Close" class="grid h-9 w-9 place-items-center rounded-lg hover:bg-slate-500/10"><i data-lucide="x" class="h-5 w-5"></i></button></div>
+    <div class="mt-3 h-1.5 overflow-hidden rounded-full bg-slate-200 dark:bg-navy-900"><div id="bar" class="h-full w-1/3 rounded-full bg-gold-500 transition-all"></div></div>
+    <p id="stepLabel" class="mt-2 text-xs font-semibold text-slate-500"></p>
+    <div id="step" class="mt-4"></div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   CONFIG – official details verified on sgigurdaspur.org (fetched today).
+   Re-verify before launch. Bind these to your CMS "site settings" record.
+   ===================================================================== */
+const CONFIG = {
+  phone: "+91 93160 93494",          // main admission helpline shown site-wide
+  landline: "+91 1870 258 305",      // listed on the Program/Courses page; confirm it is still active
+  whatsapp: "919316093494",          // wa.me format, same number as the site's WhatsApp button
+  email: "admin@sgigurdaspur.org",
+  address: "Sukhjinder Group Of Institutes, V.P.O. Hayat Nagar, Gurdaspur, Punjab, India – 143521",
+  map: "https://maps.app.goo.gl/z1nv9U5LRuHPXvu68",
+  social: [["Facebook", "https://www.facebook.com/SukhjinderInstitutes/"], ["LinkedIn", "https://www.linkedin.com/company/sukhjinder-group-of-institutes/"], ["Instagram", "https://www.instagram.com/sukhjindergroupofinstitutes_/"]],
+  leadEndpoint: null                 // e.g. "/api/leads". While null, "Request callback" opens a prefilled email instead.
+};
+
+/* =====================================================================
+   COURSE + FEE DATA
+   Program names and faculties come from the site navigation.
+   `elig` (minimum qualification) follows the Program/Courses page.
+   FEES: the live site publishes NO fee amounts and NO seat intake, so
+   every figure is null on purpose. Fill these from the institute's
+   official fee schedule (one record per course) in your CMS/database.
+   Never estimate or round: a null shows “Confirm with admissions”.
+   ===================================================================== */
+const FEE_FIELDS = [["tuition", "Tuition fee"], ["exam", "Examination fee"], ["lab", "Lab charges"], ["other", "Other / semester charges"]];
+const COURSES = [
+  // [id, faculty, name, durationYears|null, minQual, eligibilityText, seats|null, fees|null]
+  ["dip-civil", "Polytechnic", "Diploma in Civil Engineering", 3, "10th", "10th from a recognized board (Maths and Science)", null, null],
+  ["dip-elec", "Polytechnic", "Diploma in Electrical Engineering", null, "10th", "10th pass with Maths and Science", null, null],
+  ["dip-mech", "Polytechnic", "Diploma in Mechanical Engineering", null, "10th", "10th pass with Maths and Science", null, null],
+  ["dip-ece", "Polytechnic", "Diploma in Electronics & Communication Engineering", null, "10th", "10th pass with Maths and Science", null, null],
+  ["dip-pharm", "Polytechnic", "Diploma in Pharmacy", null, "12pcb", "10+2 with Physics, Chemistry, Biology", null, null],
+  ["dip-le", "Polytechnic", "Diploma in Engineering (Lateral Entry)", null, null, "Confirm with admissions", null, null],
+  ["bpharm", "Pharmacy", "Bachelor of Pharmacy", null, "12pcb", "10+2 with Physics, Chemistry, Biology", null, null],
+  ["bpharm-le", "Pharmacy", "B Pharmacy (Lateral Entry)", null, null, "Confirm with admissions", null, null],
+  ["bsc-nurs", "Nursing", "B.Sc Nursing", null, "12pcb", "10+2 with Physics, Chemistry, Biology", null, null],
+  ["gnm", "Nursing", "GNM (General Nursing & Midwifery)", null, "12pcb", "10+2 with Physics, Chemistry, Biology", null, null],
+  ["anm", "Nursing", "ANM (Auxiliary Nurse Midwifery)", null, "12pcb", "10+2 with Physics, Chemistry, Biology", null, null],
+  ["bsc-cs", "Science & Technology", "B.Sc. in Computer Science", null, "12", "10+2 with relevant subjects", null, null],
+  ["bsc-mls", "Science & Technology", "B.Sc. in Medical Lab Science", null, "12", "10+2 with relevant subjects", null, null],
+  ["bcom", "Science & Technology", "Bachelor of Commerce (Honours)", null, "12", "10+2 with relevant subjects", null, null],
+  ["bvoc-hw", "Science & Technology", "B.Voc in Hardware & Networking", null, "12", "10+2 with relevant subjects", null, null],
+  ["ett", "Teacher Training", "D.El.Ed / ETT", null, "grad", "Graduation (per Program page; confirm)", null, null],
+  ["nutr", "Home Science", "B.Sc. (Hons) Nutrition & Dietetics", null, "12", "10+2 with relevant subjects", null, null]
+  // Add the remaining programs from the site menu here in the same shape.
+].map(([id, faculty, name, years, minQual, elig, seats, fees]) => ({ id, faculty, name, years, minQual, elig, seats, fees }));
+
+const RANK = { "10th": 0, "12": 1, "12pcb": 2, "grad": 3 };
+const QUALS = [["10th", "10th pass"], ["12", "12th (non-medical / other)"], ["12pcb", "12th with Physics, Chemistry, Biology"], ["grad", "Graduate"]];
+
+const PLACEMENT = { // as displayed on the homepage; labels kept as published
+  stats: [["500000+", "Highest salary package"], ["150+", "Offers from Fortune 500 companies"], ["200+", "Total recruiters"], ["3000+", "Top percentile package"]],
+  logos: ["Tata", "Intel", "Amazon", "Google", "Wipro", "Infosys", "Videocon", "Tech Mahindra"],
+  stories: [["Ayesha Sharma", "B.Sc Nursing", "Supportive faculty and practical learning built her confidence."], ["Rohan Mehta", "B.Sc. Computer Science", "Strengthened his skills for real-world challenges."], ["Neha Khanna", "B.Pharmacy", "Industry-focused training made the shift to work smooth."], ["Aditya Rao", "B.Voc Hardware & Networking", "Hands-on learning made him job-ready."]]
+};
+const FACILITIES = ["Smart classrooms", "Modern labs", "Digital library", "Gymnasium", "Hostels", "Transport", "24/7 security", "Sports & cultural events"];
+
+/* ---------- helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const inr = n => "₹" + Number(n).toLocaleString("en-IN");
+const tel = p => "tel:" + p.replace(/\s/g, "");
+const waLink = msg => "https://api.whatsapp.com/send?phone=" + CONFIG.whatsapp + (msg ? "&text=" + encodeURIComponent(msg) : "");
+const pill = on => "shrink-0 rounded-full px-4 py-2 text-sm font-semibold transition " + (on ? "bg-gold-500 text-navy-950" : "glass hover:bg-slate-500/10");
+
+/* ---------- contact surfaces (single source: CONFIG) ---------- */
+$("#cbPhone").textContent = CONFIG.phone; $("#cbCall").href = tel(CONFIG.phone);
+$("#cbWa").href = waLink(); $("#mbWa").href = waLink(); $("#mbCall").href = tel(CONFIG.phone);
+$("#cbEmail").textContent = CONFIG.email; $("#cbMail").href = "mailto:" + CONFIG.email;
+$("#fAddr").textContent = CONFIG.address; $("#fMap").href = CONFIG.map;
+$("#fCall").textContent = "Call: " + CONFIG.phone; $("#fCall").href = tel(CONFIG.phone);
+$("#fLand").textContent = "Landline: " + CONFIG.landline; $("#fLand").href = tel(CONFIG.landline);
+$("#fMail").textContent = CONFIG.email; $("#fMail").href = "mailto:" + CONFIG.email;
+$("#fSocial").innerHTML = CONFIG.social.map(([n, u]) => `<a class="text-xs underline hover:text-gold-400" href="${u}" target="_blank" rel="noopener">${n}</a>`).join("");
+
+/* ---------- theme ---------- */
+const root = document.documentElement; let saved = null; try { saved = localStorage.getItem("theme"); } catch (e) {}
+if (saved ? saved === "dark" : matchMedia("(prefers-color-scheme: dark)").matches) root.classList.add("dark");
+$("#themeBtn").onclick = () => { const d = root.classList.toggle("dark"); try { localStorage.setItem("theme", d ? "dark" : "light"); } catch (e) {} };
+addEventListener("scroll", () => $("#nav").classList.toggle("glass", scrollY > 30), { passive: true });
+
+/* ---------- course explorer ---------- */
+const faculties = ["All", ...new Set(COURSES.map(c => c.faculty))]; let fac = "All";
+function feeBlock(c) {
+  const rows = FEE_FIELDS.map(([k, label]) => {
+    const v = c.fees && c.fees[k] != null ? c.fees[k] : null;
+    return `<div class="flex justify-between gap-3"><dt>${label}</dt><dd class="${v == null ? "text-slate-500" : "font-bold"}">${v == null ? "Confirm with admissions" : inr(v)}</dd></div>`;
+  }).join("");
+  return `<dl class="mt-3 space-y-1 border-t border-slate-400/30 pt-3 text-xs">${rows}</dl>`;
+}
+function renderCourses() {
+  $("#facTabs").innerHTML = faculties.map(f => `<button role="tab" aria-selected="${f === fac}" data-f="${esc(f)}" class="${pill(f === fac)}">${esc(f)}</button>`).join("");
+  $("#grid").innerHTML = COURSES.filter(c => fac === "All" || c.faculty === fac).map(c => `
+    <article class="glass rounded-2xl p-5 transition hover:-translate-y-1 hover:shadow-xl">
+      <span class="text-xs font-bold uppercase tracking-wider text-gold-500">${esc(c.faculty)}</span>
+      <h3 class="mt-1 font-bold leading-snug">${esc(c.name)}</h3>
+      <dl class="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
+        <div class="flex justify-between gap-3"><dt>Duration</dt><dd class="font-semibold">${c.years ? c.years + " years" : "Confirm with admissions"}</dd></div>
+        <div class="flex justify-between gap-3"><dt>Seat intake</dt><dd class="font-semibold">${c.seats ?? "Confirm with admissions"}</dd></div>
+        <div><dt class="inline">Eligibility: </dt><dd class="inline font-semibold">${esc(c.elig)}</dd></div>
+      </dl>
+      ${feeBlock(c)}
+      <button data-apply="${c.id}" class="mt-4 w-full rounded-xl bg-navy-900 py-2 text-sm font-bold text-white transition hover:bg-navy-800 dark:bg-gold-500 dark:text-navy-950">Apply for this course</button>
+    </article>`).join("");
+  lucide.createIcons(); observe();
+}
+$("#facTabs").onclick = e => { const b = e.target.closest("[data-f]"); if (b) { fac = b.dataset.f; renderCourses(); } };
+
+/* ---------- placements & campus ---------- */
+$("#stats").innerHTML = PLACEMENT.stats.map(([v, l]) => `<div class="reveal glass rounded-2xl p-5 text-center"><p class="text-3xl font-extrabold text-gold-500">${v}</p><p class="mt-1 text-sm text-slate-600 dark:text-slate-400">${l}</p></div>`).join("");
+$("#logos").innerHTML = PLACEMENT.logos.map(l => `<span class="glass rounded-xl px-4 py-2 text-sm font-bold text-slate-600 dark:text-slate-300">${l}</span>`).join("");
+$("#stories").innerHTML = PLACEMENT.stories.map(([n, p, q]) => `<figure class="reveal glass rounded-2xl p-5"><p class="font-bold">${n}</p><p class="text-xs text-slate-500">${p}</p><blockquote class="mt-2 text-sm">${q}</blockquote></figure>`).join("");
+const hues = [220, 190, 35, 260, 160, 15, 300, 140];
+$("#gallery").innerHTML = FACILITIES.map((g, i) => `<div class="reveal group relative aspect-[4/3] overflow-hidden rounded-2xl" style="background:linear-gradient(135deg,hsl(${hues[i]} 70% 35%),hsl(${hues[i] + 40} 70% 20%))"><span class="absolute bottom-3 left-3 font-bold text-white transition group-hover:-translate-y-1">${g}</span></div>`).join("");
+
+/* =====================================================================
+   3-STEP ENROLLMENT FLOW
+   Step 1 details + eligibility → Step 2 course + fees → Step 3 send.
+   Works today with no backend: WhatsApp sends a prefilled message to the
+   official number; callback falls back to a prefilled email.
+   To go further: set CONFIG.leadEndpoint, store the lead, then trigger
+   SMS/WhatsApp confirmation and the seat token from the server
+   (WhatsApp Business API / SMS gateway). File uploads need a server
+   endpoint (e.g. signed storage URL); wa.me links cannot carry files.
+   ===================================================================== */
+const S = { step: 1, name: "", phone: "", qual: "10th", course: null };
+const modal = $("#modal");
+const inputCls = "mt-1 w-full rounded-xl border border-slate-300 bg-transparent p-3 dark:border-slate-600";
+function open(id) { S.step = 1; if (id) { S.course = id; } modal.classList.replace("hidden", "flex"); draw(); document.body.style.overflow = "hidden"; }
+function close() { modal.classList.replace("flex", "hidden"); document.body.style.overflow = ""; }
+const eligible = c => c.minQual == null ? null : RANK[S.qual] >= RANK[c.minQual];
+function draw() {
+  $("#bar").style.width = S.step * 33.4 + "%";
+  $("#stepLabel").textContent = ["", "Step 1 of 3 · Your details", "Step 2 of 3 · Choose course", "Step 3 of 3 · Send & verify"][S.step];
+  const el = $("#step");
+  if (S.step === 1) {
+    el.innerHTML = `<label class="block text-sm font-semibold">Full name<input id="fName" autocomplete="name" value="${esc(S.name)}" class="${inputCls}"></label>
+      <label class="mt-3 block text-sm font-semibold">Mobile number<input id="fPhone" type="tel" inputmode="tel" autocomplete="tel" value="${esc(S.phone)}" class="${inputCls}"></label>
+      <label class="mt-3 block text-sm font-semibold">Highest qualification<select id="fQual" class="${inputCls}">${QUALS.map(([k, l]) => `<option value="${k}" ${k === S.qual ? "selected" : ""} class="text-slate-900">${l}</option>`).join("")}</select></label>
+      <p id="err" class="mt-2 hidden text-sm text-rose-500">Please enter your name and a valid 10-digit mobile number.</p>
+      <button id="next" class="mt-5 w-full rounded-xl bg-gold-500 py-3 font-bold text-navy-950">Continue</button>`;
+    $("#next").onclick = () => {
+      S.name = $("#fName").value.trim(); S.phone = $("#fPhone").value.replace(/[^\d+]/g, ""); S.qual = $("#fQual").value;
+      if (!S.name || S.phone.replace(/\D/g, "").length < 10) { $("#err").classList.remove("hidden"); return; }
+      S.step = 2; draw();
+    };
+  } else if (S.step === 2) {
+    const list = COURSES.filter(c => eligible(c) !== false);
+    if (S.course && !list.some(c => c.id === S.course)) S.course = null;
+    el.innerHTML = `<p class="text-sm text-slate-500">Showing courses that match your qualification.</p>
+      <label class="mt-2 block text-sm font-semibold">Course<select id="fCourse" class="${inputCls}"><option value="" class="text-slate-900">Select…</option>${list.map(c => `<option value="${c.id}" ${c.id === S.course ? "selected" : ""} class="text-slate-900">${esc(c.name)}</option>`).join("")}</select></label>
+      <div id="cInfo" class="mt-4"></div>
+      <div class="mt-5 flex gap-2"><button id="back" class="rounded-xl border border-slate-400/50 px-4 py-3 font-semibold">Back</button><button id="next" class="flex-1 rounded-xl bg-gold-500 py-3 font-bold text-navy-950 disabled:opacity-50">Continue</button></div>`;
+    const info = () => {
+      const c = COURSES.find(x => x.id === $("#fCourse").value); S.course = c ? c.id : null; $("#next").disabled = !c;
+      $("#cInfo").innerHTML = c ? `<div class="rounded-2xl bg-slate-500/10 p-4 text-sm"><p class="font-bold">${esc(c.name)}</p><p class="mt-1">Eligibility: ${esc(c.elig)}</p>${eligible(c) === null ? '<p class="mt-1 text-amber-600">Eligibility needs a quick check by our team.</p>' : ""}${feeBlock(c)}</div>` : "";
+    };
+    $("#fCourse").onchange = info; info();
+    $("#back").onclick = () => { S.step = 1; draw(); }; $("#next").onclick = () => { S.step = 3; draw(); };
+  } else {
+    const c = COURSES.find(x => x.id === S.course);
+    const msg = `Hello SGI Gurdaspur admissions. I would like to apply.\nName: ${S.name}\nPhone: ${S.phone}\nQualification: ${QUALS.find(q => q[0] === S.qual)[1]}\nCourse: ${c.name}`;
+    el.innerHTML = `<div class="rounded-2xl bg-slate-500/10 p-4 text-sm"><p class="font-bold">${esc(S.name)} · ${esc(S.phone)}</p><p>${esc(c.name)}</p></div>
+      <a id="wa" href="${waLink(msg)}" target="_blank" rel="noopener" class="mt-4 flex items-center justify-center gap-2 rounded-xl bg-emerald-500 py-3 font-bold text-white"><i data-lucide="message-circle" class="h-5 w-5"></i>Send on WhatsApp to verify</a>
+      <button id="cb" class="mt-2 w-full rounded-xl border border-slate-400/50 py-3 font-semibold">Request an advisor callback</button>
+      <p id="done" class="mt-3 hidden text-sm text-emerald-600"></p>
+      <p class="mt-3 text-xs text-slate-500">Documents are collected by the admissions team after this step. Your seat is confirmed once the team verifies eligibility and fees.</p>
+      <button id="back" class="mt-2 w-full py-2 text-sm text-slate-500">Back</button>`;
+    lucide.createIcons();
+    $("#back").onclick = () => { S.step = 2; draw(); };
+    $("#cb").onclick = async () => {
+      const lead = { name: S.name, phone: S.phone, qualification: S.qual, course: c.id, createdAt: new Date().toISOString() };
+      if (CONFIG.leadEndpoint) {
+        try { const r = await fetch(CONFIG.leadEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) }); if (!r.ok) throw 0; $("#done").textContent = "Callback requested. Our team will call you soon."; $("#done").classList.remove("hidden"); return; } catch (e) {}
+      }
+      location.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent("Callback request: " + c.name) + "&body=" + encodeURIComponent(msg);
+    };
+  }
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-apply]"); if (b) open(b.dataset.apply || null); });
+$("#mClose").onclick = close; modal.onclick = e => { if (e.target === modal) close(); };
+addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+
+/* ---------- reveal ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .1 });
+function observe() { document.querySelectorAll(".reveal:not(.in)").forEach(el => io.observe(el)); }
+renderCourses(); observe(); lucide.createIcons();
+</script>
+</body>
+</html>
